@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BorderTitleStyle" >
+        <attr name="rlTitleText" format="string" />
+        <attr name="rlTitleTextColor" format="color" />
+        <attr name="rlTitleTextSize" format="dimension" />
+        <attr name="rlTitleMarginLeft" format="dimension" />
+        <attr name="rlTitleMarginRight" format="dimension" />
+        <attr name="rlTitleMarginTop" format="dimension" />
+        <attr name="rlTitleMarginBottom" format="dimension" />
+        <attr name="rlShowBorder" format="boolean" />
+        <attr name="rlBorderColor" format="color" />
+        <attr name="rlBorderStrokeWidth" format="integer" />
+    </declare-styleable>
+</resources>
