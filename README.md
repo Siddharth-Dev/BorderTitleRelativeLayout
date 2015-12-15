@@ -2,7 +2,7 @@
 A relative layout which can show borders and title at top. It also support border color, title color and etc
 
 # Xml example
-<com.sj.customview.bordertitlerelativelayout.BorderTitleRelativeLayout
+<<com.sj.customview.bordertitlerelativelayout.BorderTitleRelativeLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/customRL"
         android:layout_centerInParent="true"
@@ -15,4 +15,4 @@ A relative layout which can show borders and title at top. It also support borde
         app:rlBorderStrokeWidth="5"
         app:rlTitleMarginBottom="0dp"
         app:rlShowBorder="true"
-        />
+        />>
