@@ -21,6 +21,7 @@ public class BorderTitleRelativeLayout extends RelativeLayout {
 
     private Paint borderPaint;
     private float defaultDimen;
+    private int originalTopPadding = -1;
 
     // Title related attributes
     private int titleColor;
@@ -65,6 +66,12 @@ public class BorderTitleRelativeLayout extends RelativeLayout {
 
     public void setTitleText(String titleText) {
         this.titleText = titleText;
+        calculateHeightAndPadding();
+        invalidate();
+    }
+
+    public void enableBorder(boolean enable) {
+        showBorder = enable;
         invalidate();
     }
 
@@ -103,10 +110,8 @@ public class BorderTitleRelativeLayout extends RelativeLayout {
 
         typedArray.recycle();
 
+        originalTopPadding = getPaddingTop();
         calculateTextBounds();
-        float paddingTop = getPaddingTop() + titleMarginTop + textheight + titleMarginBottom ;
-        setPadding(getPaddingLeft(), (int) paddingTop, getPaddingRight(), getPaddingBottom());
-
     }
 
     @Override
@@ -114,6 +119,18 @@ public class BorderTitleRelativeLayout extends RelativeLayout {
 
         super.dispatchDraw(canvas);
         drawBorder(canvas);
+    }
+
+    private void calculateHeightAndPadding() {
+        calculateTextBounds();
+        if (originalTopPadding < 0) {
+            originalTopPadding = getPaddingTop();
+        }
+        float paddingTop =  originalTopPadding;
+        if (hasTitle()) {
+            paddingTop =  titleMarginTop + textheight + titleMarginBottom ;
+        }
+        setPadding(getPaddingLeft(), (int) paddingTop, getPaddingRight(), getPaddingBottom());
     }
 
     private float getTextHieght() {
@@ -125,13 +142,15 @@ public class BorderTitleRelativeLayout extends RelativeLayout {
     }
 
     private void calculateTextBounds() {
-        Rect bounds = new Rect();
-        titlePaint.getTextBounds(titleText, 0, titleText.length(), bounds);
+        if (hasTitle()) {
+            Rect bounds = new Rect();
+            titlePaint.getTextBounds(titleText, 0, titleText.length(), bounds);
 
 
-        textheight = bounds.height();
-        textWidth = bounds.width();
-        Log.d(getClass().getName(), "Text width normal way : " +textWidth);
+            textheight = bounds.height();
+            textWidth = bounds.width();
+            Log.d(getClass().getName(), "Text width normal way : " + textWidth);
+        }
     }
 
     @Override
@@ -192,30 +211,30 @@ public class BorderTitleRelativeLayout extends RelativeLayout {
 
         float[] textWidthArray =  new float[4];
         float maxWidth = width - titleMarginLeft - titleMarginRight;
-        String textToiMeasure = titleText;
-        int totalLength = titleText.length();
-        int charMeasured = 0;
-        String breakDownText = "";
-        while (charMeasured < totalLength) {
-            int charCouneted = titlePaint.breakText(textToiMeasure, true, maxWidth, textWidthArray);
-
-            if (charMeasured < totalLength) {
-                if (breakDownText.length() >0){
-                    breakDownText = breakDownText + "\n";
-                }
-                 breakDownText += textToiMeasure.substring(0, charCouneted);
-                textToiMeasure = textToiMeasure.substring(charCouneted);
-
-            }
-            charMeasured += charCouneted;
-            Log.d(getClass().getName(), "Char counted : " + charCouneted);
-            Log.d(getClass().getName(), "text to measure : " + textToiMeasure);
-            Log.d(getClass().getName(), "BreakDowntext : " + breakDownText);
-            Log.d(getClass().getName(), "charmeasured : " + charMeasured);
-        }
-
-        Log.d(getClass().getName(), "Break text ---");
-        Log.d(getClass().getName(), "BreakDowntext : " + breakDownText);
+//        String textToiMeasure = titleText;
+//        int totalLength = titleText.length();
+//        int charMeasured = 0;
+//        String breakDownText = "";
+//        while (charMeasured < totalLength) {
+//            int charCouneted = titlePaint.breakText(textToiMeasure, true, maxWidth, textWidthArray);
+//
+//            if (charMeasured < totalLength) {
+//                if (breakDownText.length() >0){
+//                    breakDownText = breakDownText + "\n";
+//                }
+//                 breakDownText += textToiMeasure.substring(0, charCouneted);
+//                textToiMeasure = textToiMeasure.substring(charCouneted);
+//
+//            }
+//            charMeasured += charCouneted;
+//            Log.d(getClass().getName(), "Char counted : " + charCouneted);
+//            Log.d(getClass().getName(), "text to measure : " + textToiMeasure);
+//            Log.d(getClass().getName(), "BreakDowntext : " + breakDownText);
+//            Log.d(getClass().getName(), "charmeasured : " + charMeasured);
+//        }
+//
+//        Log.d(getClass().getName(), "Break text ---");
+//        Log.d(getClass().getName(), "BreakDowntext : " + breakDownText);
         float textStartX = width;
         float textHeightHalf = 0;
         if (hasTitle()) {

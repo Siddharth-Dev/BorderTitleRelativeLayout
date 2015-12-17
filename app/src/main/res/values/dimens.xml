@@ -5,4 +5,5 @@
 
     <dimen name="border_title_default">10dp</dimen>
     <dimen name="border_title_default_textsize">18sp</dimen>
+    <dimen name="dimen_300dp">300dp</dimen>
 </resources>

@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">BorderTitleRelativeLayout</string>
+    <string name="title_text">Title goes here</string>
+    <string name="dummy_text">Currently this support only single line tittle, so the title after border will not be visible.\n The project is uploaded on GitHub and will support other things too as soon as possible.
+    \n It supports many things like border color, stroke width, title color, title size, show border, show title, margin</string>
+
+    <string-array name="different_types">
+        <item>Both - Match Parent</item>
+        <item>Both - Wrap Content</item>
+        <item>Both - 300dp</item>
+        <item>Width - Match Parent</item>
+        <item>Height - Match Parent</item>
+        <item>Without title</item>
+        <item>without border</item>
+    </string-array>
 </resources>

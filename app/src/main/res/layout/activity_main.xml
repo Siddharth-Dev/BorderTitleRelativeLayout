@@ -1,49 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/different_types"></Spinner>
+
     <com.sj.customview.bordertitlerelativelayout.BorderTitleRelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/customRL"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:rlTitleText="Siddharth is so awesome!"
-        app:rlTitleTextColor="@color/colorPrimaryDark"
-        app:rlTitleTextSize="20dp"
+        android:layout_below="@+id/spinner"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         app:rlBorderColor="@color/colorAccent"
         app:rlBorderStrokeWidth="5"
-        app:rlTitleMarginBottom="0dp"
         app:rlShowBorder="true"
-        >
-        <LinearLayout android:orientation="vertical"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-            <TextView android:text="Hello World!"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView android:text="Hello World!"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView android:text="Hello World!"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView android:text="Hello World!"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView android:text="Hello World!"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        app:rlTitleMarginBottom="0dp"
+        app:rlTitleText="Siddharth is so awesome!"
+        app:rlTitleTextColor="@color/colorPrimaryDark"
+        app:rlTitleTextSize="20dp">
 
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="@string/dummy_text" />
     </com.sj.customview.bordertitlerelativelayout.BorderTitleRelativeLayout>
 </RelativeLayout>
